@@ -1,6 +1,3 @@
-# String-Patttern-Search-Visualizer
-Educational project that demonstrates Naive, KMP, and Rabin–Karp string matching algorithms with animations, charts, dark mode, and exportable results
-
 # 🔍 String Pattern Search Visualizer
 
 An **interactive learning tool** that demonstrates **Naive, Knuth-Morris-Pratt (KMP), and Rabin–Karp** string searching algorithms with **step-by-step animations**, **LPS table visualization**, **rolling hash comparisons**, and **performance analysis**.  
