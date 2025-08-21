@@ -1,0 +1,125 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>String Pattern Search Visualizer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <h1>🔍 String Pattern Search Visualizer</h1>
+
+    <div class="input-section">
+      <input type="text" id="text" placeholder="Enter the text..." />
+      <input type="text" id="pattern" placeholder="Enter the pattern..." />
+      <div class="btn-group">
+        <button onclick="runKMP()">Visualize KMP</button>
+        <button onclick="runRabinKarp()">Visualize Rabin-Karp</button>
+        <button onclick="clearOutput()">Clear</button>
+      </div>
+    </div>
+
+    <div class="output-section">
+      <div class="output-box">
+        <h2>KMP Output</h2>
+        <pre id="kmp-output">⏳ Waiting for input...</pre>
+      </div>
+      <div class="output-box">
+        <h2>Rabin-Karp Output</h2>
+        <pre id="rk-output">⏳ Waiting for input...</pre>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>String Pattern Search Visualizer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <!-- Charts + PDF (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <div class="app">
+    <div class="header">
+      <h1>🔍 String Pattern Search Visualizer</h1>
+      <div class="header-actions">
+        <label class="toggle">
+          <input type="checkbox" id="theme-toggle" />
+          <span>🌙 Dark Mode</span>
+        </label>
+        <label class="toggle">
+          <input type="checkbox" id="animate-toggle" checked />
+          <span>🎬 Step-by-step (1s)</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="input-section">
+      <textarea id="text" rows="3" placeholder="Enter the TEXT here...">ababcabcabababd</textarea>
+      <input type="text" id="patterns" placeholder="Enter PATTERN(s) — use commas for multiple (e.g., ababd, abc, baba)" value="ababd" />
+      <div class="btn-group">
+        <button id="btn-naive">Visualize Naive</button>
+        <button id="btn-kmp">Visualize KMP</button>
+        <button id="btn-rk">Visualize Rabin–Karp</button>
+        <button id="btn-runall" class="secondary">Run All & Update Charts</button>
+        <button id="btn-clear" class="ghost">Clear</button>
+        <button id="btn-export" class="accent">Export TXT</button>
+        <button id="btn-export-pdf" class="accent">Export PDF</button>
+      </div>
+    </div>
+
+    <div class="output-section">
+      <div class="output-box">
+        <h2>Naive Output</h2>
+        <pre id="naive-output">⏳ Waiting for input...</pre>
+      </div>
+
+      <div class="output-box">
+        <h2>KMP Output</h2>
+        <pre id="kmp-output">⏳ Waiting for input...</pre>
+      </div>
+
+      <div class="output-box">
+        <h2>Rabin–Karp Output</h2>
+        <pre id="rk-output">⏳ Waiting for input...</pre>
+      </div>
+
+      <div class="output-box">
+        <h2>LPS Table (KMP)</h2>
+        <div class="lps-wrap">
+          <table id="lps-table" class="lps-table">
+            <thead></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="charts">
+      <div class="chart-card">
+        <h3>Comparisons Count (lower is better)</h3>
+        <canvas id="cmpChart" height="150"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3>Execution Time (ms)</h3>
+        <canvas id="timeChart" height="150"></canvas>
+      </div>
+    </div>
+
+    <footer>
+      <small>Tip: Add multiple patterns using commas to see Rabin–Karp shine.</small>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
